@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administrador EXPOTELCO</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .admin-panel {
+      max-width: 600px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #002244;
+      margin-bottom: 20px;
+    }
+    input[type="file"], input[type="text"] {
+      display: block;
+      margin-bottom: 15px;
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    button.upload-btn {
+      background-color: #800020;
+      color: white;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      width: 100%;
+    }
+    button.upload-btn:hover {
+      background-color: #990000;
+    }
+    .status {
+      margin-top: 15px;
+      font-weight: bold;
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Logo Telecomunicaciones" class="logo">
+    <h1>Panel de Administración</h1>
+  </header>
+
+  <main>
+    <div class="admin-panel">
+      <h2>Subir nuevo proyecto PDF</h2>
+      <input type="file" id="fileInput" accept="application/pdf">
+      <input type="text" id="nombreArchivo" placeholder="Nombre para el archivo (ej. proyecto4.pdf)">
+      
+      <form action="/upload" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="password" value="expotelco2025">
+        <input type="file" name="archivo" accept="application/pdf" required>
+        <button class="upload-btn" type="submit">Subir PDF</button>
+      </form>
+    
+      <div id="status" class="status"></div>
+    </div>
+  </main>
+
+  <footer>
+    <p>COORDINACIÓN DE TELECOMUNICACIONES 2025</p>
+    <img src="logo.png" alt="Logo Pie de página" class="logo-footer">
+  </footer>
+
+  <!-- script eliminado porque el backend maneja la lógica -->
+<script>
+    function subirPDF() {
+      const fileInput = document.getElementById('fileInput');
+      const nombreArchivo = document.getElementById('nombreArchivo').value;
+      const status = document.getElementById('status');
+
+      if (!fileInput.files.length || !nombreArchivo) {
+        status.textContent = 'Por favor selecciona un archivo PDF y nómbralo.';
+        status.style.color = 'red';
+        return;
+      }
+
+      // Simulación de carga (debería integrarse con backend real)
+      status.textContent = 'Simulación: PDF "' + nombreArchivo + '" subido exitosamente.';
+      status.style.color = 'green';
+    }
+  </script>
+</body>
+</html>
